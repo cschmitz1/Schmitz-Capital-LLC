@@ -60,7 +60,7 @@
   /* Hero */
   .hero {
     text-align: center;
-    padding: 7rem 2rem 5rem;
+    padding: 4rem 2rem 2.5rem;
     max-width: 860px;
     margin: 0 auto;
   }
@@ -91,13 +91,40 @@
   }
   .hero-stats {
     display: flex; justify-content: center; gap: 3rem;
-    margin-top: 4rem; padding-top: 3rem;
+    margin-top: 2rem; padding-top: 2rem;
     border-top: 1px solid var(--border);
     flex-wrap: wrap;
   }
   .stat-item { text-align: center; }
   .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent-light); }
   .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+  /* Photo strip */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1fr;
+    gap: 1rem;
+    padding: 0 2rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .photo-strip img {
+    width: 100%; height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+    filter: brightness(0.88) saturate(1.1);
+    transition: filter 0.3s, transform 0.3s;
+  }
+  .photo-strip img:hover {
+    filter: brightness(1) saturate(1.2);
+    transform: scale(1.02);
+  }
+  @media (max-width: 768px) {
+    .photo-strip { grid-template-columns: 1fr; }
+    .photo-strip img { height: 200px; }
+  }
 
   /* Trust bar */
   .trust-bar {
@@ -273,6 +300,11 @@
 </head>
 <body>
 
+<!-- PHONE BAR -->
+<div style="position:fixed;top:64px;right:2rem;z-index:99;background:var(--accent);padding:0.35rem 1.25rem;border-radius:0 0 8px 8px;font-size:0.8rem;font-weight:600;color:#fff;white-space:nowrap;">
+  Call or text Schmitz Capital at <a href="tel:+12175625655" style="color:#fff;text-decoration:none;">(217) 562-5655</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Schmitz<span>Capital</span></a>
@@ -280,7 +312,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#how-it-works">Process</a></li>
     <li><a href="#results">Results</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Get Booked</a></li>
   </ul>
 </nav>
 
@@ -288,7 +320,7 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">Web Design & Conversion Experts</div>
+    <div class="hero-badge">Web Design & Hosting Agency</div>
     <h1>Websites that <em>turn visitors into clients</em></h1>
     <p>Schmitz Capital LLC builds high-converting websites designed to generate real leads, book more calls, and grow your revenue — not just look good.</p>
     <div class="hero-stats">
@@ -307,14 +339,21 @@
     </div>
   </div>
 
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80" alt="Modern web design workspace">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Developer working on laptop">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Business analytics dashboard">
+  </div>
+
   <!-- TRUST BAR -->
   <div class="trust-bar">
     <p>Trusted by businesses across industries</p>
     <div class="trust-items">
       <span>Real Estate</span>
-      <span>Law Firms</span>
-      <span>E-Commerce</span>
       <span>Contractors</span>
+      <span>Roofers</span>
+      <span>Electricians</span>
       <span>Healthcare</span>
       <span>Agencies</span>
     </div>
@@ -352,9 +391,9 @@
         <p>Over 70% of traffic is mobile. Every site we build looks and performs perfectly on every device.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🛒</div>
-        <h3>E-Commerce Builds</h3>
-        <p>Custom online stores engineered to reduce cart abandonment and maximize average order value.</p>
+        <div class="service-icon">🛡️</div>
+        <h3>Hosting, Security & Maintenance</h3>
+        <p>We handle all hosting, security, and automated updates — so your site stays fast, safe, and up to date without you lifting a finger.</p>
       </div>
     </div>
   </section>
@@ -386,6 +425,17 @@
       </div>
     </div>
   </section>
+
+  <!-- MANAGED SITES NOTE -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem 3rem;">
+    <div style="background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);border-radius:12px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+      <span style="font-size:1.4rem;">🖥️</span>
+      <div>
+        <p style="font-weight:700;font-size:0.95rem;margin-bottom:0.2rem;">We also manage your website for you.</p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0;">That includes hosting, security, automated updates, and ongoing changes — all handled on our end so you can focus on running your business.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- RESULTS -->
   <section id="results">
@@ -430,6 +480,18 @@
             <div class="form-group">
               <label for="q-biz">Business Name</label>
               <input type="text" id="q-biz" name="business_name" placeholder="Acme Co." required>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label for="q-email">Email Address</label>
+              <input type="email" id="q-email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group">
+              <label for="q-phone">Phone Number</label>
+              <input type="tel" id="q-phone" name="phone" placeholder="(555) 555-5555" required>
             </div>
           </div>
           <div class="form-row single">
@@ -500,6 +562,8 @@
     const firstName = document.getElementById('q-first').value.trim();
     const lastName = document.getElementById('q-last').value.trim();
     const bizName = document.getElementById('q-biz').value.trim();
+    const email = document.getElementById('q-email').value.trim();
+    const phone = document.getElementById('q-phone').value.trim();
     const websiteUrl = document.getElementById('q-url').value.trim();
 
     const body = {
@@ -507,6 +571,8 @@
       first_name: firstName,
       last_name: lastName,
       business_name: bizName,
+      email: email,
+      phone: phone,
       website_url: websiteUrl || 'Not provided'
     };
 
